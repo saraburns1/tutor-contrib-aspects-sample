@@ -1,7 +1,6 @@
 import os
 from glob import glob
 
-import click
 import importlib_resources
 from tutor import hooks
 
@@ -46,14 +45,14 @@ hooks.Filters.CONFIG_OVERRIDES.add_items(
 ########################################
 
 # To add a custom initialization task, create a bash script template under:
-# tutorsample_aspects/templates/sample-aspects/tasks/
+# tutoraspects_sample/templates/aspects-sample/tasks/
 # and then add it to the MY_INIT_TASKS list. Each task is in the format:
 # ("<service>", ("<path>", "<to>", "<script>", "<template>"))
 MY_INIT_TASKS: list[tuple[str, tuple[str, ...]]] = [
     # For example, to add LMS initialization steps, you could add the script template at:
-    # tutorsample_aspects/templates/sample-aspects/tasks/lms/init.sh
+    # tutoraspects_sample/templates/aspects-sample/tasks/lms/init.sh
     # And then add the line:
-    ### ("lms", ("sample-aspects", "tasks", "lms", "init.sh")),
+    ### ("lms", ("aspects-sample", "tasks", "lms", "init.sh")),
 ]
 
 
@@ -62,7 +61,7 @@ MY_INIT_TASKS: list[tuple[str, tuple[str, ...]]] = [
 # run it as part of the `init` job.
 for service, template_path in MY_INIT_TASKS:
     full_path: str = str(
-        importlib_resources.files("tutorsample_aspects")
+        importlib_resources.files("tutoraspects_sample")
         / os.path.join("templates", *template_path)
     )
     with open(full_path, encoding="utf-8") as init_task_file:
@@ -81,11 +80,11 @@ for service, template_path in MY_INIT_TASKS:
 hooks.Filters.IMAGES_BUILD.add_items(
     [
         # To build `myimage` with `tutor images build myimage`,
-        # you would add a Dockerfile to templates/sample-aspects/build/myimage,
+        # you would add a Dockerfile to templates/aspects-sample/build/myimage,
         # and then write:
         ### (
         ###     "myimage",
-        ###     ("plugins", "sample-aspects", "build", "myimage"),
+        ###     ("plugins", "aspects-sample", "build", "myimage"),
         ###     "docker.io/myimage:{{ SAMPLE_ASPECTS_VERSION }}",
         ###     (),
         ### ),
@@ -130,7 +129,7 @@ hooks.Filters.IMAGES_PUSH.add_items(
 hooks.Filters.ENV_TEMPLATE_ROOTS.add_items(
     # Root paths for template files, relative to the project root.
     [
-        str(importlib_resources.files("tutorsample_aspects") / "templates"),
+        str(importlib_resources.files("tutoraspects_sample") / "templates"),
     ]
 )
 
@@ -138,11 +137,11 @@ hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
     # For each pair (source_path, destination_path):
     # templates at ``source_path`` (relative to your ENV_TEMPLATE_ROOTS) will be
     # rendered to ``source_path/destination_path`` (relative to your Tutor environment).
-    # For example, ``tutorsample_aspects/templates/sample-aspects/build``
-    # will be rendered to ``$(tutor config printroot)/env/plugins/sample-aspects/build``.
+    # For example, ``tutoraspects_sample/templates/aspects-sample/build``
+    # will be rendered to ``$(tutor config printroot)/env/plugins/aspects-sample/build``.
     [
-        ("sample-aspects/build", "plugins"),
-        ("sample-aspects/apps", "plugins"),
+        ("aspects-sample/build", "plugins"),
+        ("aspects-sample/apps", "plugins"),
     ],
 )
 
@@ -153,9 +152,11 @@ hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
 #  this section as-is :)
 ########################################
 
-# For each file in tutorsample_aspects/patches,
+# For each file in tutoraspects_sample/patches,
 # apply a patch based on the file's name and contents.
-for path in glob(str(importlib_resources.files("tutorsample_aspects") / "patches" / "*")):
+for path in glob(
+    str(importlib_resources.files("tutoraspects_sample") / "patches" / "*")
+):
     with open(path, encoding="utf-8") as patch_file:
         hooks.Filters.ENV_PATCHES.add_item((os.path.basename(path), patch_file.read()))
 
@@ -205,17 +206,17 @@ for path in glob(str(importlib_resources.files("tutorsample_aspects") / "patches
 
 
 ### @click.group()
-### def sample-aspects() -> None:
+### def aspects-sample() -> None:
 ###     pass
 
 
-### hooks.Filters.CLI_COMMANDS.add_item(sample-aspects)
+### hooks.Filters.CLI_COMMANDS.add_item(aspects-sample)
 
 
 # Then, you would add subcommands directly to the Click group, for example:
 
 
-### @sample-aspects.command()
+### @aspects-sample.command()
 ### def example_command() -> None:
 ###     """
 ###     This is helptext for an example command.
@@ -224,4 +225,4 @@ for path in glob(str(importlib_resources.files("tutorsample_aspects") / "patches
 
 
 # This would allow you to run:
-#   $ tutor sample-aspects example-command
+#   $ tutor aspects-sample example-command

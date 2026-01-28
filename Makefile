@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 .PHONY: docs
-SRC_DIRS = ./tutorsample_aspects
+SRC_DIRS = ./tutoraspects_sample
 
 # Warning: These checks are not necessarily run on every PR.
 test: test-lint test-types test-format  # Run some static checks.
@@ -21,7 +21,7 @@ fix-lint: ## Fix lint errors automatically
 	ruff check --fix ${SRC_DIRS}
 
 version: ## Print the current tutor-cairn version
-	@python -c 'import io, os; about = {}; exec(io.open(os.path.join("tutorsample_aspects", "__about__.py"), "rt", encoding="utf-8").read(), about); print(about["__version__"])'
+	@python -c 'import io, os; about = {}; exec(io.open(os.path.join("tutoraspects_sample", "__about__.py"), "rt", encoding="utf-8").read(), about); print(about["__version__"])'
 
 ESCAPE = 
 help: ## Print this help
