@@ -24,9 +24,9 @@ metadata:
   shared_label_colors: {}
   timed_refresh_immune_slices: []
 position:
-  CHART-W8U3MZ4I:
+  CHART-SNGHJGRB:
     children: []
-    id: CHART-W8U3MZ4I
+    id: CHART-SNGHJGRB
     meta:
       chartId: 1661
       height: 50
@@ -36,12 +36,12 @@ position:
     parents:
     - ROOT_ID
     - GRID_ID
-    - ROW-N-ZBOJF9CD
+    - ROW-N-CFH1QT68
     type: CHART
   DASHBOARD_VERSION_KEY: v2
   GRID_ID:
     children:
-    - ROW-N-ZBOJF9CD
+    - ROW-N-CFH1QT68
     id: GRID_ID
     parents:
     - ROOT_ID
@@ -56,10 +56,10 @@ position:
     - GRID_ID
     id: ROOT_ID
     type: ROOT
-  ROW-N-ZBOJF9CD:
+  ROW-N-CFH1QT68:
     children:
-    - CHART-W8U3MZ4I
-    id: ROW-N-ZBOJF9CD
+    - CHART-SNGHJGRB
+    id: ROW-N-CFH1QT68
     meta:
       '0': ROOT_ID
       background: BACKGROUND_TRANSPARENT
