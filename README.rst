@@ -7,7 +7,7 @@ aspects-sample plugin for Tutor
 Installation
 ************
 
-.. code-block:: bash
+.. code-block:: none
 
     pip install git+https://github.com/saraburns1/tutor-contrib-aspects-sample
     tutor plugins enable aspects-sample
@@ -18,7 +18,7 @@ Adding New Assets
 1. Create a dashboard in the Superset UI and export it as a ZIP file.
 2. Import zip file into the aspects-sample plugin with the following command:
 
-.. code-block:: bash
+.. code-block:: none
     
     tutor aspects import_superset_zip ~/Downloads/your_file.zip --base_assets_path ./tutoraspects_sample/templates/aspects-sample/build/assets
 
