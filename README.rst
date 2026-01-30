@@ -10,16 +10,25 @@ Installation
 .. code-block:: bash
 
     pip install git+https://github.com/saraburns1/tutor-contrib-aspects-sample
-
-Usage
-*****
-
-.. code-block:: bash
-
     tutor plugins enable aspects-sample
+    tutor config save
+
+Adding New Assets
+*****************
+Create a dashboard in the Superset UI and export it as a ZIP file.
+
+``tutor aspects import_superset_zip ~/Downloads/your_file.zip --base_assets_path ./tutoraspects_sample/templates/aspects-sample/build/assets``
+
+Validate and rebuild:
+``tutor aspects check_superset_assets``
+``tutor local do import-assets``
 
 
-License
-*******
+Additional Resources
+=====================
 
-This software is licensed under the terms of the AGPLv3.
+- `Superset Documentation <https://superset.apache.org/docs>`_
+- `DBT Documentation <https://www.getdbt.com/docs/>`_
+- `Clickhouse Documentation <https://clickhouse.com/docs>`_
+- `Tutor Documentation <https://docs.tutor.overhang.io>`_
+- `Event Routing Backends Documentation <https://event-routing-backends.readthedocs.io/en/latest/>`_
