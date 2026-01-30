@@ -17,11 +17,15 @@ Adding New Assets
 *****************
 Create a dashboard in the Superset UI and export it as a ZIP file.
 
-``tutor aspects import_superset_zip ~/Downloads/your_file.zip --base_assets_path ./tutoraspects_sample/templates/aspects-sample/build/assets``
+.. code-block:: bash
+    
+    tutor aspects import_superset_zip ~/Downloads/your_file.zip --base_assets_path ./tutoraspects_sample/templates/aspects-sample/build/assets
 
 Validate and rebuild:
-``tutor aspects check_superset_assets``
-``tutor local do import-assets``
+.. code-block:: bash
+    
+    tutor aspects check_superset_assets
+    tutor local do import-assets
 
 
 Additional Resources
