@@ -46,12 +46,12 @@ hooks.Filters.CONFIG_OVERRIDES.add_items(
 ########################################
 
 # To add a custom initialization task, create a bash script template under:
-# tutorsample_aspects/templates/sample-aspects/tasks/
+# tutoraspects_sample/templates/sample-aspects/tasks/
 # and then add it to the MY_INIT_TASKS list. Each task is in the format:
 # ("<service>", ("<path>", "<to>", "<script>", "<template>"))
 MY_INIT_TASKS: list[tuple[str, tuple[str, ...]]] = [
     # For example, to add LMS initialization steps, you could add the script template at:
-    # tutorsample_aspects/templates/sample-aspects/tasks/lms/init.sh
+    # tutoraspects_sample/templates/sample-aspects/tasks/lms/init.sh
     # And then add the line:
     ### ("lms", ("sample-aspects", "tasks", "lms", "init.sh")),
 ]
@@ -62,7 +62,7 @@ MY_INIT_TASKS: list[tuple[str, tuple[str, ...]]] = [
 # run it as part of the `init` job.
 for service, template_path in MY_INIT_TASKS:
     full_path: str = str(
-        importlib_resources.files("tutorsample_aspects")
+        importlib_resources.files("tutoraspects_sample")
         / os.path.join("templates", *template_path)
     )
     with open(full_path, encoding="utf-8") as init_task_file:
@@ -130,7 +130,7 @@ hooks.Filters.IMAGES_PUSH.add_items(
 hooks.Filters.ENV_TEMPLATE_ROOTS.add_items(
     # Root paths for template files, relative to the project root.
     [
-        str(importlib_resources.files("tutorsample_aspects") / "templates"),
+        str(importlib_resources.files("tutoraspects_sample") / "templates"),
     ]
 )
 
@@ -138,7 +138,7 @@ hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
     # For each pair (source_path, destination_path):
     # templates at ``source_path`` (relative to your ENV_TEMPLATE_ROOTS) will be
     # rendered to ``source_path/destination_path`` (relative to your Tutor environment).
-    # For example, ``tutorsample_aspects/templates/sample-aspects/build``
+    # For example, ``tutoraspects_sample/templates/sample-aspects/build``
     # will be rendered to ``$(tutor config printroot)/env/plugins/sample-aspects/build``.
     [
         ("sample-aspects/build", "plugins"),
@@ -153,9 +153,9 @@ hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
 #  this section as-is :)
 ########################################
 
-# For each file in tutorsample_aspects/patches,
+# For each file in tutoraspects_sample/patches,
 # apply a patch based on the file's name and contents.
-for path in glob(str(importlib_resources.files("tutorsample_aspects") / "patches" / "*")):
+for path in glob(str(importlib_resources.files("tutoraspects_sample") / "patches" / "*")):
     with open(path, encoding="utf-8") as patch_file:
         hooks.Filters.ENV_PATCHES.add_item((os.path.basename(path), patch_file.read()))
 

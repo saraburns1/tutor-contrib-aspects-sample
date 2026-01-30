@@ -1,2 +1,2 @@
-recursive-include tutorsample_aspects/patches *
-recursive-include tutorsample_aspects/templates *
+recursive-include tutoraspects_sample/patches *
+recursive-include tutoraspects_sample/templates *
