@@ -1,7 +1,7 @@
-sample-aspects plugin for `Tutor <https://docs.tutor.edly.io>`__
+aspects-sample plugin for `Tutor <https://docs.tutor.edly.io>`__
 ################################################################
 
-sample-aspects plugin for Tutor
+aspects-sample plugin for Tutor
 
 
 Installation
@@ -16,7 +16,7 @@ Usage
 
 .. code-block:: bash
 
-    tutor plugins enable sample-aspects
+    tutor plugins enable aspects-sample
 
 
 License

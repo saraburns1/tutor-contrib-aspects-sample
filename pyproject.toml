@@ -2,8 +2,8 @@
 # https://hatch.pypa.io/latest/config/build/
 
 [project]
-name = "tutor-contrib-sample-aspects"
-description = "sample-aspects plugin for Tutor"
+name = "tutor-contrib-aspects-sample"
+description = "aspects-sample plugin for Tutor"
 authors = [
   { name = "Sara Burns"},
   { email = "sburns@axim.org" },
@@ -62,4 +62,4 @@ include = [ "/tutoraspects_sample"]
 exclude = ["tests*"]
 
 [project.entry-points."tutor.plugin.v1"]
-sample-aspects = "tutoraspects_sample.plugin"
+aspects-sample = "tutoraspects_sample.plugin"
