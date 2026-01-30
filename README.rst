@@ -23,6 +23,7 @@ Adding New Assets
     tutor aspects import_superset_zip ~/Downloads/your_file.zip --base_assets_path ./tutoraspects_sample/templates/aspects-sample/build/assets
 
 3. Check that the assets have been imported correctly and upload them to Superset:
+
 .. code-block:: none
     
     tutor aspects check_superset_assets
