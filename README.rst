@@ -15,15 +15,15 @@ Installation
 
 Adding New Assets
 *****************
-Create a dashboard in the Superset UI and export it as a ZIP file.
+1. Create a dashboard in the Superset UI and export it as a ZIP file.
+2. Import zip file into the aspects-sample plugin with the following command:
 
 .. code-block:: bash
     
     tutor aspects import_superset_zip ~/Downloads/your_file.zip --base_assets_path ./tutoraspects_sample/templates/aspects-sample/build/assets
 
-Validate and rebuild:
-
-.. code-block:: bash
+3. Check that the assets have been imported correctly and upload them to Superset:
+.. code-block:: none
     
     tutor aspects check_superset_assets
     tutor local do import-assets
