@@ -1,4 +1,4 @@
-{% for file in "aspects-sample/build/assets"|walk_templates %}
+{% for file in "aspects-sample/buils/assets"|walk_templates %}
 ---
 _file_name: {{ file.split('/')[-1] }}
 {% include file %}
